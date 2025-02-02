@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎀 Draw to ASCII Art 🎀</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: pink; color: #ff1493; }
+        canvas { border: 3px solid #ff1493; cursor: crosshair; background-color: #ffe6f2; width: 600px; height: 600px; }
+        #controls { margin-top: 10px; }
+        button { background-color: #ff69b4; color: white; border: none; padding: 10px; margin: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #ff1493; }
+        select, input { margin: 5px; padding: 5px; font-size: 16px; }
+        h1 { font-size: 24px; font-family: monospace; color: #ff1493; position: relative; display: inline-block; padding: 0 20px; }
+        label, select, input { color: #ff1493; font-weight: bold; }
+        .emoji { font-size: 20px; }
+        .ascii-container { text-align: center; margin-top: 5px; font-size: 16px; font-family: monospace; color: #ff1493; }
+    </style>
+</head>
+<body>
+    <h1>Draw to ASCII Art</h1>
+    <div class="ascii-container" id="asciiAnimation"></div>
+    <p class="emoji">✨🎀🌸 Welcome to the cutest ASCII art creator! 🌸🎀✨</p>
+    <canvas id="drawingCanvas" width="600" height="600"></canvas>
+    <div id="controls">
+        <label for="colorPicker">🎨 Choose Color:</label>
+        <input type="color" id="colorPicker" value="#000000">
+        <label for="asciiChar">💖 Choose ASCII Character:</label>
+        <select id="asciiChar">
+            <option value="@">@</option>
+            <option value="#">#</option>
+            <option value="*">*</option>
+            <option value="%">%</option>
+            <option value="+">+</option>
+            <option value="=">=</option>
+            <option value="-">-</option>
+            <option value=":">:</option>
+            <option value=".">.</option>
+            <option value=" ">Space</option>
+            <option value="random">💫 Random Pattern</option>
+        </select>
+        <button onclick="clearCanvas()">🧼 Clear</button>
+    </div>
+    
+    <script>
+        const asciiChars = ['@', '#', '*', '%', '+', '=', '-', ':', '.', ' '];
+
+        function animateAscii() {
+            const asciiContainer = document.getElementById('asciiAnimation');
+            let asciiPattern = '';
+            for (let i = 0; i < 20; i++) {
+                asciiPattern += asciiChars[Math.floor(Math.random() * asciiChars.length)];
+            }
+            asciiContainer.textContent = asciiPattern;
+        }
+        setInterval(animateAscii, 500);
+    </script>
+</body>
+</html>
